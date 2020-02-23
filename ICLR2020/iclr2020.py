@@ -75,6 +75,27 @@ def download_iclr20(client, outdir='./', get_pdfs=False):
     keywords.reverse()
     print(keywords)
 
+    with open(os.path.join(outdir, 'Statistics.md'), 'w') as file_handle:
+        file_handle.write("# Statistics\n")
+        file_handle.write("\n")
+        file_handle.write("## Counts \n")
+        file_handle.write("\n")
+        total = 0
+        for cat in rl_submissions:
+            total += len(rl_submissions[cat])
+            # file_handle.write(json.dumps(forum_metadata) + '\n')
+            file_handle.write("{} count: {}\n".format(cat, len(rl_submissions[cat])))
+            file_handle.write("\n")
+        
+        file_handle.write("{} count: {}\n".format("Total", total ))
+        file_handle.write("\n")
+
+        file_handle.write("## Keywords\n")
+        file_handle.write("\n")
+        for keyword in keywords:
+            file_handle.write("{}:{}\n".format(keyword[0], keyword[1]))
+
+
     for cat in rl_submissions.keys():
         with open(os.path.join(outdir, '{}.md'.format(cat)), 'w') as file_handle:
             file_handle.write("# {}\n".format(cat))
