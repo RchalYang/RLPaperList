@@ -93,7 +93,7 @@ def download_iclr20(client, outdir='./', get_pdfs=False):
         file_handle.write("## Keywords\n")
         file_handle.write("\n")
         for keyword in keywords:
-            file_handle.write("{}:{}\n".format(keyword[0], keyword[1]))
+            file_handle.write("{}:{}\n\n".format(keyword[0], keyword[1]))
 
 
     for cat in rl_submissions.keys():
