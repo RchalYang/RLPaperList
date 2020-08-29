@@ -118,15 +118,18 @@ def download_iclr20(client, outdir='./', get_pdfs=False):
                 file_handle.write(json.dumps(forum_metadata) + '\n')
 
     # if requested, download pdfs to a subdirectory.
-    # if get_pdfs:
+    if get_pdfs:
 
-    #     pdf_outdir = os.path.join(outdir, 'iclr20_pdfs_rl')
-    #     os.makedirs(pdf_outdir)
-    #     for forum_metadata in tqdm(metadata, desc='getting pdfs'):
-    #         pdf_binary = client.get_pdf(forum_metadata['forum'])
-    #         pdf_outfile = os.path.join(pdf_outdir, '{}.pdf'.format(forum_metadata['forum']))
-    #         with open(pdf_outfile, 'wb') as file_handle:
-    #             file_handle.write(pdf_binary)
+        base_pdf_outdir = os.path.join(outdir, 'iclr20_pdfs_rl')
+        os.makedirs(base_pdf_outdir)
+        for cat in rl_submissions.keys():
+            pdf_outdir = os.path.join(base_pdf_outdir, cat)
+            os.makedirs(pdf_outdir)
+            for forum_metadata in tqdm(rl_submissions[cat], desc='getting pdfs'):
+                pdf_binary = client.get_pdf(forum_metadata['forum'])
+                pdf_outfile = os.path.join(pdf_outdir, '{}.pdf'.format(forum_metadata['content']['title']))
+                with open(pdf_outfile, 'wb') as file_handle:
+                    file_handle.write(pdf_binary)
 
 
 if __name__ == '__main__':
