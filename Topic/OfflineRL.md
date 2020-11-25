@@ -1,6 +1,6 @@
 # Paper List from Offline-RL workshop NeurIPS 2020
 
-![Offline-RL Workshop Resource Page](https://offline-rl-neurips.github.io/resources.html)
+[Offline-RL Workshop Resource Page](https://offline-rl-neurips.github.io/resources.html)
 
 Agarwal, R., Schuurmans, D., and Norouzi, M. 2020. An Optimistic Perspective on Offline Reinforcement Learning. International Conference on Machine Learning (ICML).
 
